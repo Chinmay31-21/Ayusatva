@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color Palette - Role-based */
+  --color-admin: #8b5cf6;
+  --color-admin-light: #a78bfa;
+  --color-doctor: #06b6d4;
+  --color-doctor-light: #22d3ee;
+  --color-nurse: #ec4899;
+  --color-nurse-light: #f472b6;
+  --color-chemist: #f59e0b;
+  --color-chemist-light: #fbbf24;
+  --color-lab: #14b8a6;
+  --color-lab-light: #2dd4bf;
+  --color-patient: #6366f1;
+  --color-patient-light: #818cf8;
+  --color-attendant: #10b981;
+  --color-attendant-light: #34d399;
+  
+  /* Glassmorphism */
+  --color-glass-bg: rgba(255, 255, 255, 0.1);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  
+  /* Shadows */
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --shadow-elevated: 0 20px 60px -15px rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-slate-100;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+  }
+
+  h1 {
+    @apply scroll-m-20 text-4xl tracking-tight;
+  }
+
+  h2 {
+    @apply scroll-m-20 text-3xl tracking-tight;
+  }
+
+  h3 {
+    @apply scroll-m-20 text-2xl tracking-tight;
+  }
+
+  h4 {
+    @apply scroll-m-20 text-xl tracking-tight;
+  }
+
+  h5 {
+    @apply scroll-m-20 text-lg tracking-tight;
+  }
+
+  p {
+    @apply text-base;
+  }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Pulse animation for real-time indicators */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-500;
+}
