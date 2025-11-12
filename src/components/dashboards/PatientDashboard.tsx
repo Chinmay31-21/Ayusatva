@@ -25,7 +25,7 @@ export function PatientDashboard() {
       {/* Header */}
       <div>
         <h1 className="mb-2">Patient Portal</h1>
-        <p className="text-slate-400">Welcome, John Doe</p>
+        <p className="text-slate-400">Welcome, Shravani Harel</p>
       </div>
 
       {/* Stats */}
