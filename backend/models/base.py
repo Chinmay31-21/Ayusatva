@@ -1,5 +1,7 @@
 from datetime import datetime
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 class BaseModel(db.Model):
     """Base model class with common fields and methods"""

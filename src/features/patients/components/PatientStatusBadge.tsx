@@ -1,6 +1,6 @@
 import React from 'react';
 import { PatientStatus } from '../types';
-import { Button, Menu, MenuButton, MenuList, MenuItem, Box, Badge } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, MenuItem, Badge } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 interface PatientStatusBadgeProps {
@@ -10,11 +10,15 @@ interface PatientStatusBadgeProps {
 }
 
 const statusColors: Record<PatientStatus, string> = {
-  'Admitted': 'blue',
-  'Under Observation': 'yellow',
-  'Critical': 'red',
-  'Discharged': 'green',
-  'Released': 'purple'
+  'admitted': 'blue',
+  'discharged': 'green',
+  'pending': 'yellow'
+};
+
+const statusLabels: Record<PatientStatus, string> = {
+  'admitted': 'Admitted',
+  'discharged': 'Discharged',
+  'pending': 'Pending'
 };
 
 export const PatientStatusBadge: React.FC<PatientStatusBadgeProps> = ({
@@ -22,12 +26,19 @@ export const PatientStatusBadge: React.FC<PatientStatusBadgeProps> = ({
   onStatusChange,
   isEditable = false
 }) => {
-  const statusList: PatientStatus[] = ['Admitted', 'Under Observation', 'Critical', 'Discharged', 'Released'];
+  const statusList: PatientStatus[] = ['admitted', 'discharged', 'pending'];
   
   if (!isEditable) {
     return (
-      <Badge colorScheme={statusColors[status]} px={2} py={1} borderRadius="md">
-        {status}
+      <Badge 
+        colorScheme={statusColors[status]} 
+        px={3} 
+        py={1} 
+        borderRadius="full"
+        textTransform="capitalize"
+        fontWeight="medium"
+      >
+        {statusLabels[status]}
       </Badge>
     );
   }
@@ -40,10 +51,11 @@ export const PatientStatusBadge: React.FC<PatientStatusBadgeProps> = ({
         size="sm" 
         colorScheme={statusColors[status]}
         variant="outline"
+        textTransform="capitalize"
       >
-        {status}
+        {statusLabels[status]}
       </MenuButton>
-      <MenuList>
+      <MenuList minW="fit-content">
         {statusList.map((s) => (
           <MenuItem 
             key={s} 

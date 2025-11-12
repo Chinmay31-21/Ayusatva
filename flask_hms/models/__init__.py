@@ -1,0 +1,1 @@
+from . import patient, doctor, nurse, room, prescription, lab_report, bill, treatment, audit_log, ambulance, employee
